@@ -1,0 +1,66 @@
+[[package]]
+name = "numpy"
+version = "1.23.1"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "dev"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "onnx"
+version = "1.12.0"
+description = "Open Neural Network Exchange"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+numpy = ">=1.16.6"
+protobuf = ">=3.12.2,<=3.20.1"
+typing-extensions = ">=3.6.2.1"
+
+[package.extras]
+lint = ["clang-format (==13.0.0)", "flake8", "mypy (==0.782)", "types-protobuf (==3.18.4)"]
+
+[[package]]
+name = "onnx-graphsurgeon"
+version = "0.3.19"
+description = "ONNX GraphSurgeon"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+numpy = "*"
+onnx = "*"
+
+[package.source]
+type = "url"
+url = "https://developer.download.nvidia.com/compute/redist/onnx-graphsurgeon/onnx_graphsurgeon-0.3.19-py2.py3-none-any.whl"
+[[package]]
+name = "protobuf"
+version = "3.20.1"
+description = "Protocol Buffers"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "typing-extensions"
+version = "4.3.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "6128217ed6f120f36ca0cf95401fb6d2b152ae76120df2ee211b4c719c538813"
+
+[metadata.files]
+numpy = []
+onnx = []
+onnx-graphsurgeon = []
+protobuf = []
+typing-extensions = []

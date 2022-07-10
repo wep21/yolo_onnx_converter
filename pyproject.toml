@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "yolo-onnx-converter"
+version = "0.1.0"
+description = ""
+authors = ["Daisuke Nishimatsu <border_goldenmarket@yahoo.co.jp>"]
+readme = "README.md"
+packages = [{include = "src/yolo_onnx_converter"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+onnx = "^1.12.0"
+onnx_graphsurgeon = { url = "https://developer.download.nvidia.com/compute/redist/onnx-graphsurgeon/onnx_graphsurgeon-0.3.19-py2.py3-none-any.whl" }
+
+[tool.poetry.scripts]
+yolo_onnx_coonverter = "src.yolo_onnx_converter.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
