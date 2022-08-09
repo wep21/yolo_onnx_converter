@@ -831,7 +831,6 @@ def main():
     parser.add_argument("cfg_file_path", help="yolov4 cfg file path", type=str)
     parser.add_argument("weights_file_path", help="yolov4 weights file path", type=str)
     parser.add_argument("label_file_path", help="yolov4 label file path", type=str)
-    parser.add_argument("--input_size", help="input size for yolov4", default=608, type=int)
     parser.add_argument(
         "--yolo_type",
         help="yolo type",
@@ -854,6 +853,8 @@ def main():
     # layer's configs from the cfg file:
     parser = DarkNetParser(supported_layers)
     layer_configs = parser.parse_cfg_file(cfg_file_path)
+    width = layer_configs["000_net"]["width"]
+    height = layer_configs["000_net"]["height"]
     # We do not need the parser anymore after we got layer_configs:
     del parser
     # count class num
@@ -865,45 +866,45 @@ def main():
     if opt.yolo_type == "yolov3":
         output_tensor_dims["082_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 32),
-            int(opt.input_size / 32),
+            int(height / 32),
+            int(width / 32),
         ]
         output_tensor_dims["094_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 16),
-            int(opt.input_size / 16),
+            int(height / 16),
+            int(width / 16),
         ]
         output_tensor_dims["106_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 8),
-            int(opt.input_size / 8),
+            int(height / 8),
+            int(width / 8),
         ]
     elif opt.yolo_type == "yolov4":
         output_tensor_dims["139_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 8),
-            int(opt.input_size / 8),
+            int(height / 8),
+            int(width / 8),
         ]
         output_tensor_dims["150_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 16),
-            int(opt.input_size / 16),
+            int(height / 16),
+            int(width / 16),
         ]
         output_tensor_dims["161_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 32),
-            int(opt.input_size / 32),
+            int(height / 32),
+            int(width / 32),
         ]
     elif opt.yolo_type == "yolov4-tiny":
         output_tensor_dims["030_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 32),
-            int(opt.input_size / 32),
+            int(height / 32),
+            int(widht / 32),
         ]
         output_tensor_dims["037_convolutional"] = [
             3 * (class_num + 5),
-            int(opt.input_size / 16),
-            int(opt.input_size / 16),
+            int(height / 16),
+            int(width / 16),
         ]
 
     # Create a GraphBuilderONNX object with the known output tensor dimensions:
